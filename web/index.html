@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exam Buddy - your notes, turned into a quiz partner that talks</title>
+  <meta name="description" content="Upload your notes or a photo of handwritten pages. Exam Buddy quizzes you out loud in English, Hindi and more Indian languages, marks your spoken answers and tells you what to revise. Built on Sarvam AI.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23ff8a1f'/%3E%3Cg fill='%231b1100'%3E%3Crect x='8' y='12' width='3' height='8' rx='1.5'/%3E%3Crect x='13' y='8' width='3' height='16' rx='1.5'/%3E%3Crect x='18' y='10' width='3' height='12' rx='1.5'/%3E%3Crect x='23' y='13' width='3' height='6' rx='1.5'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <a class="nav-brand" href="#top" aria-label="Exam Buddy home">
+    <span class="logo-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    Exam Buddy
+  </a>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#live">Live agent</a>
+    <a class="btn btn-small btn-light" href="#app">Start a quiz</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-copy">
+    <span class="eyebrow">Built on Sarvam AI · Sarvam Campus '26</span>
+    <h1>Your notes, turned into a quiz partner <span class="hl">that talks.</span></h1>
+    <p class="lead">Upload notes or a photo of your handwritten pages. Exam Buddy asks you out loud in English, Hindi and
+      9 more Indian languages, listens to your answer, marks it fairly, and tells you exactly what to revise.</p>
+    <div class="hero-cta">
+      <a class="btn btn-accent" href="#app">Start a quiz</a>
+      <a id="heroLive" class="btn btn-ghost-light" href="#live">Talk to the live agent</a>
+    </div>
+    <ul class="hero-points">
+      <li>Learning mode with instant feedback</li>
+      <li>Timed exam mode with a full review</li>
+      <li>Reads handwritten notes</li>
+    </ul>
+  </div>
+
+  <div class="hero-visual" aria-hidden="true">
+    <div class="phone">
+      <div class="phone-top"><span class="pill">Exam mode</span><span class="ring-mini">0:42</span></div>
+      <div class="bubble bubble-q">What does 2NF remove?</div>
+      <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="bubble bubble-a">"Partial dependency... jab non-key attribute key ke sirf part par depend kare"</div>
+      <div class="phone-mic"></div>
+    </div>
+    <span class="float f1">Correct! +1</span>
+    <span class="float f2">हिंदी · English</span>
+    <span class="float f3">Revise: BCNF</span>
+  </div>
+</header>
+
+<!-- ============ STRIP ============ -->
+<section class="strip">
+  <span><b>11</b> Indian languages</span>
+  <span><b>2</b> practice modes</span>
+  <span><b>1 / ½ / 0</b> fair marking</span>
+  <span><b>0</b> answers stored</span>
+</section>
+
+<!-- ============ HOW ============ -->
+<section class="section" id="how">
+  <h2 class="section-title">How it works</h2>
+  <p class="section-sub">Four steps, about a minute to set up.</p>
+  <div class="steps">
+    <article class="step"><span class="step-n">1</span><h3>Add your notes</h3>
+      <p>Markdown, text, a PDF, or a phone photo of handwritten pages. Sarvam Vision reads the handwriting.</p></article>
+    <article class="step"><span class="step-n">2</span><h3>Pick a mode</h3>
+      <p>Learning mode explains every answer. Exam mode is timed and stays silent until the review.</p></article>
+    <article class="step"><span class="step-n">3</span><h3>Answer out loud</h3>
+      <p>Speak naturally, even mixing Hindi and English. Saaras understands code-mixed speech.</p></article>
+    <article class="step"><span class="step-n">4</span><h3>Get your review</h3>
+      <p>Score, every answer marked against your notes, and the exact topics to revise.</p></article>
+  </div>
+</section>
+
+<!-- ============ APP ============ -->
+<section class="section app-section" id="app">
+  <p id="banner" class="banner" hidden role="alert"></p>
+
+  <!-- SETUP -->
+  <div id="setup" class="panel">
+    <div class="panel-head">
+      <h2>Start a quiz</h2>
+      <span class="muted">Your notes stay in memory for this quiz only.</span>
+    </div>
+
+    <div class="setup-grid">
+      <div>
+        <h3 class="label">1 · Your notes</h3>
+        <label id="drop" class="drop" tabindex="0">
+          <input id="file" type="file" accept=".md,.txt,.pdf,.png,.jpg,.jpeg,.webp" hidden>
+          <span class="drop-icon" aria-hidden="true"></span>
+          <b>Drop notes here or click to upload</b>
+          <small>.md · .txt · .pdf · photo of handwritten notes</small>
+        </label>
+        <div id="fileChip" class="file-chip" hidden>
+          <img id="filePreview" alt="" hidden>
+          <span id="fileName"></span>
+          <button id="clearFile" class="link" type="button">Remove</button>
+        </div>
+        <button id="togglePaste" class="link" type="button">or paste text instead</button>
+        <textarea id="notesText" rows="5" placeholder="Paste a page of your notes..." hidden></textarea>
+        <label id="sampleCard" class="sample">
+          <input id="useSample" type="checkbox" checked>
+          <span><b>Use the sample notes</b><small>DBMS · Normalization (1NF to BCNF)</small></span>
+        </label>
+      </div>
+
+      <div>
+        <h3 class="label">2 · Mode</h3>
+        <div class="modes" role="radiogroup" aria-label="Mode">
+          <label class="mode">
+            <input type="radio" name="mode" value="learn" checked>
+            <span class="mode-icon learn" aria-hidden="true"></span>
+            <b>Learning mode</b>
+            <small>Feedback after every answer · one hint per question (caps it at ½ mark)</small>
+          </label>
+          <label class="mode">
+            <input type="radio" name="mode" value="exam">
+            <span class="mode-icon exam" aria-hidden="true"></span>
+            <b>Exam mode</b>
+            <small>60 s per question · no hints · no feedback until the full review</small>
+          </label>
+        </div>
+
+        <h3 class="label">3 · Language</h3>
+        <div id="langs" class="langs" role="radiogroup" aria-label="Language"></div>
+
+        <h3 class="label">4 · Questions</h3>
+        <div class="seg" role="radiogroup" aria-label="Number of questions">
+          <label><input type="radio" name="count" value="3"><span>3</span></label>
+          <label><input type="radio" name="count" value="5" checked><span>5</span></label>
+          <label><input type="radio" name="count" value="10"><span>10</span></label>
+        </div>
+      </div>
+    </div>
+
+    <button id="start" class="btn btn-accent btn-wide">Start quiz</button>
+    <div id="loading" class="loading" hidden>
+      <span class="spinner" aria-hidden="true"></span>
+      <ol class="load-steps">
+        <li id="ls1">Reading your notes</li>
+        <li id="ls2">Writing questions with Sarvam-105B</li>
+        <li id="ls3">Recording the first question</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" class="panel quiz" hidden>
+    <div class="quiz-bar">
+      <span id="modeBadge" class="badge"></span>
+      <div id="dots" class="dots" aria-hidden="true"></div>
+      <span id="progress" class="muted"></span>
+    </div>
+
+    <div class="quiz-body">
+      <div class="q-card">
+        <div class="q-meta"><span id="topic" class="chip"></span><span id="difficulty" class="chip chip-soft"></span></div>
+        <p id="questionText" class="q-text"></p>
+        <button id="replay" class="speak" type="button" aria-label="Hear the question again">
+          <span class="speak-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="speakLabel">Repeat</span>
+        </button>
+      </div>
+
+      <div id="examRing" class="ring" hidden aria-label="Time left">
+        <svg viewBox="0 0 120 120"><circle class="ring-bg" cx="60" cy="60" r="52"/><circle id="ringArc" class="ring-arc" cx="60" cy="60" r="52"/></svg>
+        <span id="ringText">1:00</span>
+      </div>
+    </div>
+
+    <div id="answerArea" class="answer">
+      <button id="mic" class="mic" type="button" aria-label="Record your answer">
+        <span id="micLevel" class="mic-level" aria-hidden="true"></span>
+        <span class="mic-icon" aria-hidden="true"></span>
+      </button>
+      <p id="micStatus" class="mic-status">Tap the mic and answer out loud</p>
+      <div class="type-row">
+        <input id="typed" type="text" placeholder="...or type your answer" autocomplete="off">
+        <button id="send" class="btn btn-primary" type="button">Send</button>
+      </div>
+      <div class="actions">
+        <button id="skip" class="btn btn-soft" type="button">I don't know</button>
+        <button id="hint" class="btn btn-soft" type="button">Hint (max ½ mark)</button>
+        <button id="endExam" class="btn btn-soft danger" type="button" hidden>End exam</button>
+      </div>
+      <p id="hintText" class="hint" hidden></p>
+    </div>
+
+    <div id="working" class="working" hidden><span class="spinner" aria-hidden="true"></span> Marking your answer...</div>
+
+    <div id="feedback" class="feedback" hidden aria-live="polite">
+      <div class="fb-head"><span id="verdict" class="verdict"></span><span id="pointsPop" class="points-pop"></span></div>
+      <p id="heard" class="heard"></p>
+      <p id="feedbackText" class="fb-text"></p>
+      <div class="answer-box"><b>Answer</b><p id="correctAnswer"></p><p id="explanation" class="muted"></p></div>
+      <button id="next" class="btn btn-primary" type="button">Next question</button>
+    </div>
+    <div id="toast" class="toast" hidden>Noted.</div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results" class="panel results" hidden>
+    <div class="results-top">
+      <div class="donut" aria-hidden="true">
+        <svg viewBox="0 0 120 120"><circle class="ring-bg" cx="60" cy="60" r="50"/><circle id="donutArc" class="donut-arc" cx="60" cy="60" r="50"/></svg>
+        <div class="donut-text"><b id="percent">0%</b><small id="score"></small></div>
+      </div>
+      <div>
+        <span id="resultMode" class="badge"></span>
+        <h2 id="resultTitle">Nice work!</h2>
+        <div id="tiles" class="tiles"></div>
+        <div id="revise" class="revise"></div>
+      </div>
+    </div>
+    <h3 class="label">Answer by answer</h3>
+    <ol id="review" class="review"></ol>
+    <div class="results-actions">
+      <button id="retryLearn" class="btn btn-accent" type="button">Practise again in Learning mode</button>
+      <button id="again" class="btn btn-soft" type="button">New quiz</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIVE AGENT (Sarvam Indus) ============ -->
+<section class="section live" id="live">
+  <div class="live-card">
+    <div>
+      <span class="eyebrow eyebrow-dark">Sarvam Indus · Voice Agent</span>
+      <h2>Talk to Exam Buddy, live</h2>
+      <p>The same quiz partner as a real-time voice agent, built in <b>Sarvam Indus</b> with Genie and a knowledge base
+        of the class notes. Just talk: <i>"Normalization, three questions, exam mode."</i></p>
+      <ul class="live-list">
+        <li>Learning and Exam modes, switch between English and Hindi</li>
+        <li>Marks only against the notes, never invents facts</li>
+        <li>Can't be talked into "mark everything correct"</li>
+      </ul>
+      <div id="liveOn" hidden>
+        <button id="liveCall" class="btn btn-primary btn-call" type="button">
+          <span class="call-dot" aria-hidden="true"></span> Start a live call with Exam Buddy</button>
+        <p class="muted">Allow the microphone when asked. You can also use the round call button at the bottom-right
+          of any page.</p>
+      </div>
+      <div id="widgetSlot"></div>
+      <p id="liveOff" class="muted" hidden>The live call button appears here once the agent's IDs are set on the server
+        (INDUS_APP_ID, INDUS_ORG_ID and INDUS_WORKSPACE_ID; see docs/indus-agent.md).</p>
+    </div>
+    <div class="live-visual" aria-hidden="true">
+      <span class="orb"></span><span class="orb o2"></span><span class="orb o3"></span>
+      <span class="orb-core"></span>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p><b>Built with Sarvam AI</b>: Saaras (speech), Bulbul (voice), Sarvam-105B (questions and marking),
+    Sarvam Vision (handwritten notes), Indus (live voice agent).</p>
+  <p class="muted">Nothing you say or upload is stored. Questions and marks come from an AI model, so check anything
+    important against your textbook.</p>
+</footer>
+
+<div id="confetti" class="confetti" aria-hidden="true"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
